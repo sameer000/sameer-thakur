@@ -72,6 +72,9 @@ testing...
         card.classList.add('project-card');
 
         card.innerHTML = `
+        
+<iframe src="${project.project_link}" name="iframe_a" height="300px" width="100%" title="Iframe Example"></iframe>
+
           <h3>${project.project}</h3>
           ${project.project_link ? `<a href="${project.project_link}" target="_blank">Visit Project</a>` : ''}
         `;
