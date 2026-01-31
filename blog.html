@@ -2,45 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sameer | Blogs</title>
-
-  <!-- Supabase CDN (ONLY ONCE) -->
+  <title>Blogs | Sameer</title>
+  <link rel="stylesheet" href="../style.css">
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
-
   <h1>Blogs</h1>
   <div id="blogs">Loading...</div>
 
   <script>
     const SUPABASE_URL = "https://wusuxccycluxrnudgwzh.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1c3V4Y2N5Y2x1eHJudWRnd3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDgzNTksImV4cCI6MjA4NTQyNDM1OX0.Eao59gp6TXpNIHjipBF8yCbhzB-OPuWwvog0NBjrZ8M";
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    /************ FETCH BLOGS ************/
     async function loadBlogs() {
-      const { data, error } = await supabaseClient
+      const { data: blogs, error } = await supabase
         .from('sameer-blogs')
         .select('*')
         .order('published_date', { ascending: false });
 
+      const container = document.getElementById("blogs");
+      container.innerHTML = "";
+
       if (error) {
-        document.getElementById("blogs").innerText = "Error loading blogs";
+        container.innerText = "Error loading blogs";
         console.error(error);
         return;
       }
 
-      renderBlogs(data);
-    }
-
-    /************ RENDER BLOGS ************/
-    function renderBlogs(blogs) {
-      const container = document.getElementById("blogs");
-      container.innerHTML = "";
-
       if (!blogs || blogs.length === 0) {
-        container.innerHTML = "No blogs found";
+        container.innerText = "No blogs found";
         return;
       }
 
@@ -48,25 +39,19 @@
         container.innerHTML += `
           <div class="blog">
             <h2>${blog.title}</h2>
-            <p><strong>Author:</strong> ${blog.author || "Admin"}</p>
-            <p>${blog.meta_description || ""}</p>
-            ${blog.cover_image ? `<img src="${blog.cover_image}" style="max-width:300px;">` : ""}
-            <p><small>${blog.published_date || ""}</small></p>
-            <button onclick="openBlog('${blog.slug}')">Read More</button>
+            <p><strong>Author:</strong> ${blog.author || 'Admin'}</p>
+            <p>${blog.meta_description || ''}</p>
+            ${blog.cover_image ? `<img src="${blog.cover_image}" alt="${blog.title}">` : ''}
+            <p><small>${blog.published_date || ''}</small></p>
+            <button onclick="window.location.href='../blog.html?slug=${blog.slug}'">
+              Read More
+            </button>
           </div>
         `;
       });
     }
 
-    /************ OPEN INDIVIDUAL BLOG ************/
-    function openBlog(slug) {
-      // URL structure: /blog/slug/
-      window.location.href = `/blog/${slug}/`;
-    }
-
-    /************ INIT ************/
     loadBlogs();
   </script>
-
 </body>
 </html>
