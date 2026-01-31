@@ -1,6 +1,9 @@
 backend:
+  backend:
   name: github
+  repo: sameer-thakur/sameer-thakur.site
   branch: main
+  auth_type: oauth
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
