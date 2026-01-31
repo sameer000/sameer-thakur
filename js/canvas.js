@@ -1,5 +1,4 @@
 
-<script>
 // put the animation on load, otherwise it bugs out
 window.addEventListener('load', () => {
     initFluid();
@@ -1127,4 +1126,3 @@ const initFluid = () => {
         return hash;
     };
 };
-</script>
