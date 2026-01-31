@@ -28,6 +28,13 @@ flex-direction: row;
 .v-flex{
 flex-direction: column;
 }
+.container {
+position: relative;
+margin: 0 auto;
+padding: 0 20px;
+max-width: 1280px;
+width: 100%;
+}
 #fluid {
 position: fixed;
 top: 0;
