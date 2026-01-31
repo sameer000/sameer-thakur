@@ -2,6 +2,16 @@
 <html>
 <head>
 <link rel="stylesheet" href="/style.css">
+<!-- index.html ya kisi bhi page me add karo -->
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+// Supabase credentials
+const supabaseUrl = 'https://wusuxccycluxrnudgwzh.supabase.co'      // Supabase Project URL
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1c3V4Y2N5Y2x1eHJudWRnd3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDgzNTksImV4cCI6MjA4NTQyNDM1OX0.Eao59gp6TXpNIHjipBF8yCbhzB-OPuWwvog0NBjrZ8M' // Supabase anon key
+const supabase = createClient(supabaseUrl, supabaseKey)
+</script>
+
 </head>
 <body>
 Blogs
