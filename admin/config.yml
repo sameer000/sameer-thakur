@@ -1,32 +1,46 @@
+# Netlify CMS configuration
 backend:
-  backend:
-  name: github
-  repo: sameer-thakur/sameer-thakur.site
-  branch: main
-  auth_type: oauth
+  name: identity
+  identity_url: https://sameer-thakur.site/.netlify/identity
+  # branch is ignored for identity backend
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "static/images/uploads"  # Where uploaded images will go
+public_folder: "/images/uploads"       # URL path for images
+
+locale: "en"
 
 collections:
-  - name: "blog"
-    label: "Blogs"
-    folder: "content/blog"
+  # ========================
+  # Blog Collection
+  # ========================
+  - name: "blog"               # internal name
+    label: "Blog"              # visible label in CMS
+    folder: "content/blog"     # where markdown files are stored
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "/blog/{{slug}}"  # optional, if your frontend uses this
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string" }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Categories", name: "categories", widget: "list" }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "projects"
-    label: "Projects"
+  # ========================
+  # Project Collection
+  # ========================
+  - name: "project"
+    label: "Project"
     folder: "content/projects"
     create: true
     slug: "{{slug}}"
+    preview_path: "/projects/{{slug}}"   # optional
     fields:
-      - { label: "Project Name", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Client Name", name: "client", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Project Image", name: "image", widget: "image" }
-      - { label: "Live URL", name: "url", widget: "string" }
+      - { label: "Short Description", name: "short_desc", widget: "text" }
+      - { label: "Detailed Description", name: "body", widget: "markdown" }
+      - { label: "Categories/Tags", name: "categories", widget: "list" }
