@@ -1,54 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/style.css">
-<!-- index.html ya kisi bhi page me add karo -->
-<script type="module">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
-
-// Supabase credentials
-const supabaseUrl = 'https://wusuxccycluxrnudgwzh.supabase.co'      // Supabase Project URL
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1c3V4Y2N5Y2x1eHJudWRnd3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDgzNTksImV4cCI6MjA4NTQyNDM1OX0.Eao59gp6TXpNIHjipBF8yCbhzB-OPuWwvog0NBjrZ8M' // Supabase anon key
-const supabase = createClient(supabaseUrl, supabaseKey)
-</script>
-
+  <title>Blogs</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
-Blogs
+
+<h1>Blogs</h1>
 <div id="blog-list" class="blog-list"></div>
 
-  <script type="module">
-async function fetchBlogs() {
-  const { data: blogs, error } = await supabase
-    .from('sameer - blogs')  // note: table name with space, quotes needed in SQL
-    .select('*')
-    .order('published_date', { ascending: false })
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-  if(error) {
-    console.error(error)
-    return
+  const supabaseUrl = 'https://wusuxccycluxrnudgwzh.supabase.co'
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1c3V4Y2N5Y2x1eHJudWRnd3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDgzNTksImV4cCI6MjA4NTQyNDM1OX0.Eao59gp6TXpNIHjipBF8yCbhzB-OPuWwvog0NBjrZ8M'
+  const supabase = createClient(supabaseUrl, supabaseKey)
+
+  async function fetchBlogs() {
+    const { data, error } = await supabase
+      .from('sameer-blogs') 
+      .select('*')
+      .order('published_date', { ascending: false })
+
+    if (error) {
+      console.error(error)
+      return
+    }
+
+    const blogList = document.getElementById('blog-list')
+    blogList.innerHTML = ''
+
+    data.forEach(blog => {
+      const card = document.createElement('div')
+      card.className = 'blog-card'
+      card.innerHTML = `
+        <img src="${blog.cover_image || 'https://via.placeholder.com/400x200'}">
+        <h2>${blog.title}</h2>
+        <p>${blog.meta_description || ''}</p>
+        <a href="/blog-detail.html?title=${encodeURIComponent(blog.title)}">
+          Read More
+        </a>
+      `
+      blogList.appendChild(card)
+    })
   }
 
-  const blogList = document.getElementById('blog-list')
-  blogList.innerHTML = '' // clear before rendering
-
-  blogs.forEach(blog => {
-    const blogCard = document.createElement('div')
-    blogCard.className = 'blog-card'
-    blogCard.innerHTML = `
-      <img src="${blog.cover_image || 'https://via.placeholder.com/400x200'}" alt="${blog.title}">
-      <h2>${blog.title}</h2>
-      <p>${blog.meta_description || ''}</p>
-      <a href="blog.html?title=${encodeURIComponent(blog.title)}">Read More</a>
-    `
-    blogList.appendChild(blogCard)
-  })
-}
-
-fetchBlogs()
+  fetchBlogs()
 </script>
 
-<script src="/script.js"></script>
 </body>
 </html>
-
