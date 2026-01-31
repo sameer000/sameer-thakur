@@ -13,14 +13,10 @@
   <div id="blogs">Loading...</div>
 
   <script>
-   const SUPABASE_URL = "https://wusuxccycluxrnudgwzh.supabase.co";
+    const SUPABASE_URL = "https://wusuxccycluxrnudgwzh.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1c3V4Y2N5Y2x1eHJudWRnd3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDgzNTksImV4cCI6MjA4NTQyNDM1OX0.Eao59gp6TXpNIHjipBF8yCbhzB-OPuWwvog0NBjrZ8M";
 
-    // 🔒 unique variable name (no conflict)
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_ANON_KEY
-    );
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     /************ FETCH BLOGS ************/
     async function loadBlogs() {
@@ -54,11 +50,18 @@
             <h2>${blog.title}</h2>
             <p><strong>Author:</strong> ${blog.author || "Admin"}</p>
             <p>${blog.meta_description || ""}</p>
-            ${blog.cover_image ? `<img src="${blog.cover_image}">` : ""}
+            ${blog.cover_image ? `<img src="${blog.cover_image}" style="max-width:300px;">` : ""}
             <p><small>${blog.published_date || ""}</small></p>
+            <button onclick="openBlog('${blog.slug}')">Read More</button>
           </div>
         `;
       });
+    }
+
+    /************ OPEN INDIVIDUAL BLOG ************/
+    function openBlog(slug) {
+      // URL structure: /blog/slug/
+      window.location.href = `/blog/${slug}/`;
     }
 
     /************ INIT ************/
