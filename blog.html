@@ -16,7 +16,38 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 <body>
 Blogs
 <div id="blog-list" class="blog-list"></div>
-</form>
+
+  <script type="module">
+async function fetchBlogs() {
+  const { data: blogs, error } = await supabase
+    .from('sameer - blogs')  // note: table name with space, quotes needed in SQL
+    .select('*')
+    .order('published_date', { ascending: false })
+
+  if(error) {
+    console.error(error)
+    return
+  }
+
+  const blogList = document.getElementById('blog-list')
+  blogList.innerHTML = '' // clear before rendering
+
+  blogs.forEach(blog => {
+    const blogCard = document.createElement('div')
+    blogCard.className = 'blog-card'
+    blogCard.innerHTML = `
+      <img src="${blog.cover_image || 'https://via.placeholder.com/400x200'}" alt="${blog.title}">
+      <h2>${blog.title}</h2>
+      <p>${blog.meta_description || ''}</p>
+      <a href="blog.html?title=${encodeURIComponent(blog.title)}">Read More</a>
+    `
+    blogList.appendChild(blogCard)
+  })
+}
+
+fetchBlogs()
+</script>
+
 <script src="/script.js"></script>
 </body>
 </html>
