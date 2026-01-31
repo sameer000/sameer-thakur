@@ -6,32 +6,33 @@
 <body>
 testing...
 <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-  <!-- Hidden field for spam protection -->
-  <input type="hidden" name="form-name" value="contact" />
-  
-  <!-- Honeypot field (spam ke liye) -->
-  <p style="display: none;">
-    <label>Don't fill this out: <input name="bot-field" /></label>
-  </p>
-  
-  <!-- Aapke actual form fields -->
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required />
-  </div>
-  
-  <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required />
-  </div>
-  
-  <div>
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" required></textarea>
-  </div>
-  
-  <button type="submit">Submit</button>
+<!-- Hidden field for spam protection -->
+<input type="hidden" name="form-name" value="contact" />
+
+<!-- Honeypot field (spam ke liye) -->
+<p style="display: none;">
+  <label>Don't fill this out: <input name="bot-field" /></label>
+</p>
+
+<!-- Aapke actual form fields -->
+<div>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required />
+</div>
+
+<div>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required />
+</div>
+
+<div>
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" required></textarea>
+</div>
+
+<button type="submit">Submit</button>
 </form>
 <script src="/script.js"></script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </body>
 </html>
