@@ -11,8 +11,11 @@ document.getElementById('footer').innerHTML = data
 })
 
 // current time
-function updateIndiaTime() {
+document.addEventListener('DOMContentLoaded', function () {
+
+  function updateIndiaTime() {
     const timeEl = document.querySelector('.current-time');
+    if (!timeEl) return;
 
     const now = new Date();
 
@@ -31,5 +34,6 @@ function updateIndiaTime() {
   }
 
   updateIndiaTime();
-
   setInterval(updateIndiaTime, 1000);
+
+});
