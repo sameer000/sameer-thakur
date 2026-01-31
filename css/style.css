@@ -10,6 +10,7 @@ body{
 background-color: #fff;
 border-radius: 10px;
 margin: 0;
+overflow: hidden;
 }
 #fluid {
 position: fixed;
