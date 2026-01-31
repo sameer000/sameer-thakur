@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let time = now.toLocaleTimeString('en-IN', options)
       .replace(' ', '');
 
-    timeEl.innerHTML = `${time} 🇮🇳`;
+    timeEl.innerHTML = `${time} IST`;
   }
 
   updateIndiaTime();
