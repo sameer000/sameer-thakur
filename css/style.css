@@ -18,6 +18,16 @@ position: relative;
 img {
 max-width: 100%;
 }
+.h-flex,
+.v-flex{
+display: flex;
+}
+.h-flex{
+flex-direction: row;
+}
+.v-flex{
+flex-direction: column;
+}
 #fluid {
 position: fixed;
 top: 0;
