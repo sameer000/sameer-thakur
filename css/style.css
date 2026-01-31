@@ -45,4 +45,9 @@ left: 0;
 width: 100dvw;
 height: 100dvh;
 }
-
+.top-bar {
+justify-content: center;
+}
+.top-left-space, .top-right-space {
+flex: 1;
+}
