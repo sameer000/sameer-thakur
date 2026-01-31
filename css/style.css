@@ -11,6 +11,7 @@ font-family: "JetBrains Mono", monospace;
 font-optical-sizing: auto;
 font-weight: 400;
 font-size: 16px;
+line-height: 1.3em;
 letter-spacing: -.5px;
 font-style: normal;
 background-color: #fff;
@@ -74,4 +75,15 @@ width: 40px;
 height: 40px;
 object-fit: cover;
 border-radius: 50%;
+}
+.current-time {
+font-size: 12px;
+opacity: 0.7;
+}
+.top-post {
+font-size: 12px;
+opacity: 0.7;
+}
+.top-name {
+font-weight: 700;
 }
