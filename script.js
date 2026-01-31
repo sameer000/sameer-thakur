@@ -14,7 +14,7 @@ const projectsSection = document.getElementById('projects-section')
 async function fetchProjects() {
   try {
     const { data, error } = await supabase
-      .from('sameer - projects') // table name exactly as in Supabase
+      .from('sameer-projects') // table name exactly as in Supabase
       .select('*')
       .order('sorting_number', { ascending: true }) // optional sorting
 
@@ -49,5 +49,6 @@ function renderProjects(projects) {
 
 // Call the function to fetch projects
 fetchProjects()
+
 
 
