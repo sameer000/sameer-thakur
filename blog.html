@@ -2,56 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Supabase Blogs</title>
+  <title>Blogs</title>
 
-  <!-- Supabase JS CDN -->
+  <!-- Supabase CDN (ONLY ONCE) -->
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f9f9f9;
-    }
-    .blog {
-      background: #fff;
-      padding: 16px;
-      margin-bottom: 16px;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-    .blog img {
-      max-width: 100%;
-      margin-top: 10px;
-      border-radius: 4px;
-    }
-  </style>
 </head>
 <body>
 
-  <h1>My Blogs</h1>
+  <h1>Blogs</h1>
   <div id="blogs">Loading...</div>
 
   <script>
-    // 🔑 SUPABASE KEYS (YAHAN APNI KEYS DALO)
-    const SUPABASE_URL = "https://wusuxccycluxrnudgwzh.supabase.co";
+   const SUPABASE_URL = "https://wusuxccycluxrnudgwzh.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1c3V4Y2N5Y2x1eHJudWRnd3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDgzNTksImV4cCI6MjA4NTQyNDM1OX0.Eao59gp6TXpNIHjipBF8yCbhzB-OPuWwvog0NBjrZ8M";
 
-    // 🔗 Supabase Client
-    const supabase = window.supabase.createClient(
+    // 🔒 unique variable name (no conflict)
+    const supabaseClient = window.supabase.createClient(
       SUPABASE_URL,
       SUPABASE_ANON_KEY
     );
 
-    // 📥 Blogs Fetch Function
+    /************ FETCH BLOGS ************/
     async function loadBlogs() {
-      const { data, error } = await supabase
-        .from('sameer-blogs')
+      const { data, error } = await supabaseClient
+        .from('sameer - blogs')
         .select('*')
         .order('published_date', { ascending: false });
 
       if (error) {
-        document.getElementById("blogs").innerHTML = "Error loading blogs";
+        document.getElementById("blogs").innerText = "Error loading blogs";
         console.error(error);
         return;
       }
@@ -59,12 +38,12 @@
       renderBlogs(data);
     }
 
-    // 🖥️ Render Blogs
+    /************ RENDER BLOGS ************/
     function renderBlogs(blogs) {
       const container = document.getElementById("blogs");
       container.innerHTML = "";
 
-      if (blogs.length === 0) {
+      if (!blogs || blogs.length === 0) {
         container.innerHTML = "No blogs found";
         return;
       }
@@ -82,7 +61,7 @@
       });
     }
 
-    // 🚀 Call
+    /************ INIT ************/
     loadBlogs();
   </script>
 
