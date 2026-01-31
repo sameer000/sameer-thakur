@@ -25,7 +25,7 @@
     /************ FETCH BLOGS ************/
     async function loadBlogs() {
       const { data, error } = await supabaseClient
-        .from('sameer - blogs')
+        .from('sameer-blogs')
         .select('*')
         .order('published_date', { ascending: false });
 
