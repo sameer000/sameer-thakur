@@ -34,7 +34,59 @@ testing...
 
 <button type="submit">Submit</button>
 </form>
+
+
+
+  <div id="project-list" class="project-list"></div>
+
+
+
+  <script type="module">
+  // ✅ 2️⃣ Supabase JS setup
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+  const supabaseUrl = 'https://wusuxccycluxrnudgwzh.supabase.co';  // Replace with your Supabase URL
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1c3V4Y2N5Y2x1eHJudWRnd3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDgzNTksImV4cCI6MjA4NTQyNDM1OX0.Eao59gp6TXpNIHjipBF8yCbhzB-OPuWwvog0NBjrZ8M'; // Replace with your anon/public key
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  const projectList = document.getElementById('project-list');
+
+  // ✅ 3️⃣ Fetch Projects
+  async function fetchProjects() {
+    try {
+      const { data, error } = await supabase
+        .from('sameer-projects')
+        .select('*')
+        .order('sorting_number', { ascending: true });
+
+      if (error) throw error;
+
+      if (data.length === 0) {
+        projectList.innerHTML = '<p>No projects found.</p>';
+        return;
+      }
+
+      // ✅ 4️⃣ Render Projects
+      data.forEach(project => {
+        const card = document.createElement('div');
+        card.classList.add('project-card');
+
+        card.innerHTML = `
+          <h3>${project.project}</h3>
+          ${project.project_link ? `<a href="${project.project_link}" target="_blank">Visit Project</a>` : ''}
+        `;
+
+        projectList.appendChild(card);
+      });
+
+    } catch (err) {
+      console.error('Error fetching projects:', err.message);
+      projectList.innerHTML = '<p>Failed to load projects.</p>';
+    }
+  }
+
+  fetchProjects();
+</script>
 <script src="/script.js"></script>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </body>
 </html>
