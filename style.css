@@ -1,10 +1,12 @@
 *{
 -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  background-color: #000;
-  padding: 10px;
+box-sizing: border-box;
+}
+html{
+background-color: #000;
+padding: 10px;
 }
 body{
 background-color: #fff;
-  border-radius: 10px;
+border-radius: 10px;
 }
