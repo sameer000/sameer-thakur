@@ -10,7 +10,10 @@ body{
 background-color: #fff;
 border-radius: 10px;
 margin: 0;
-overflow: hidden;
+position: relative;
+}
+section{
+position: relative;
 }
 #fluid {
 position: fixed;
@@ -19,3 +22,4 @@ left: 0;
 width: 100dvw;
 height: 100dvh;
 }
+
