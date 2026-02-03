@@ -1,7 +1,7 @@
-        // Initialize Lucide Icons
+// Lucide Icons
         lucide.createIcons();
 
-        // Project Reveal Logic
+        // Project Reveal Logic 
         const viewMoreBtn = document.getElementById('view-more-btn');
         const projectsPerLoad = 4;
 
@@ -10,19 +10,17 @@
             const toReveal = hiddenProjects.slice(0, projectsPerLoad);
 
             toReveal.forEach((proj, index) => {
-                // Staggered delay for pop animation
                 setTimeout(() => {
                     proj.classList.add('visible');
                 }, index * 100);
             });
 
-            // Check if there are any more left to hide the button
             if (hiddenProjects.length <= projectsPerLoad) {
                 viewMoreBtn.style.display = 'none';
             }
         });
 
-        // Smooth Menu Toggle Logic
+        // Menu Toggle Logic 
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             const burger = document.getElementById('burger-btn');
@@ -44,16 +42,13 @@
             }
         }
 
-        // Optimized IST Live Clock
+        // Live Clock 
         function updateClock() {
             const clock = document.getElementById('live-clock');
             const now = new Date();
             const timeStr = now.toLocaleTimeString('en-US', { 
-                hour: 'numeric', 
-                minute: '2-digit', 
-                second: '2-digit', 
-                hour12: true,
-                timeZone: 'Asia/Kolkata'
+                hour: 'numeric', minute: '2-digit', second: '2-digit', 
+                hour12: true, timeZone: 'Asia/Kolkata'
             });
             clock.textContent = `${timeStr} IST`;
         }
