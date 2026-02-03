@@ -249,15 +249,20 @@
             width: 0;
         }
 
-        /* --- PROJECT ANIMATION --- */
+        /* --- PROJECT ANIMATION & VISIBILITY --- */
+        .project-card {
+            display: none; /* Initially hidden */
+        }
+
+        .project-card.visible {
+            display: block;
+            animation: projectPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
         @keyframes projectPop {
             0% { opacity: 0; transform: scale(0.8) translateY(30px); }
             70% { transform: scale(1.05) translateY(-5px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .project-card-animated {
-            animation: projectPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         /* --- GRID LAYOUTS --- */
@@ -479,7 +484,7 @@
             </div>
         </section>
 
-        <!-- PROJECTS (DYNAMIC) -->
+        <!-- PROJECTS (STATIC) -->
         <section id="projects" style="margin-top:80px;">
             <div class="container">
                 <div class="section-divider" style="transform: rotate(1deg);"></div>
@@ -487,7 +492,92 @@
                 
                 <!-- Project Grid -->
                 <div class="grid grid-2" id="project-grid" style="gap:40px;">
-                    <!-- Projects will be injected here via JS -->
+                    
+                    <!-- Batch 1 (Visible) -->
+                    <div class="comic-panel project-card visible">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="shopping-bag" style="width:50px; height:50px; opacity:0.1;"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">SNEAKER VAULT</h3>
+                            <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">A high-conversion Shopify store built for a premium sneaker brand.</p>
+                            <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: 35% growth in online sales.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card visible">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="home" style="width:50px; height:50px; opacity:0.1;"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">GLOBAL REALTY</h3>
+                            <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">Dynamic WordPress portal for real estate agencies with custom maps.</p>
+                            <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: Reduced page load time by 60%.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card visible">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="bar-chart-2" style="width:50px; height:50px; opacity:0.1;"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">FINTECH DASHBOARD</h3>
+                            <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">A React-based financial analytics tool for enterprise clients.</p>
+                            <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: Real-time data processing under 100ms.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card visible">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="coffee" style="width:50px; height:50px; opacity:0.1;"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">NOIR COFFEE CO.</h3>
+                            <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">Branding and Webflow development for a boutique coffee roastery.</p>
+                            <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: Featured on 'Sites of the Day'.</p>
+                        </div>
+                    </div>
+
+                    <!-- Batch 2 (Hidden) -->
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="activity" style="width:50px; height:50px; opacity:0.1;"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">FITNESS TRACKER</h3>
+                            <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">Custom mobile-first web app for tracking personalized workout plans.</p>
+                            <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: 10,000+ active monthly users.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="cpu" style="width:50px; height:50px; opacity:0.1;"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">CRYPTO EXPLORER</h3>
+                            <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">Real-time blockchain explorer with advanced transaction filtering.</p>
+                            <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: Highly secure architecture.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="image" style="width:50px; height:50px; opacity:0.1;"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">PORTFOLIO PLUS</h3>
+                            <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">A CMS template for creative artists to showcase their work.</p>
+                            <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: Used by 500+ global artists.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="briefcase" style="width:50px; height:50px; opacity:0.1;"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">AGENCY NEXUS</h3>
+                            <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">Internal workflow tool for managing agency-client relations.</p>
+                            <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: Improved productivity by 25%.</p>
+                        </div>
+                    </div>
+
+                    <!-- Batch 3 (Hidden) -->
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="book-open" style="width:50px; height:50px; opacity:0.1;"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">E-LEARN HUB</h3>
+                            <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">LMS platform for corporate training with interactive quizzes.</p>
+                            <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: Trained 50,000+ employees.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="map" style="width:50px; height:50px; opacity:0.1;"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">TRAVEL LOG</h3>
+                            <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">Community-driven blog platform for digital nomads.</p>
+                            <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: Integrated custom travel map APIs.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- View More Button Container -->
@@ -529,91 +619,62 @@
     </footer>
 
     <script>
-        // Project Data Array
-        const projectsData = [
-            { title: "SNEAKER VAULT", desc: "A high-conversion Shopify store built for a premium sneaker brand.", outcome: "35% growth in online sales.", icon: "shopping-bag" },
-            { title: "GLOBAL REALTY", desc: "Dynamic WordPress portal for real estate agencies with custom maps.", outcome: "Reduced page load time by 60%.", icon: "home" },
-            { title: "FINTECH DASHBOARD", desc: "A React-based financial analytics tool for enterprise clients.", outcome: "Real-time data processing under 100ms.", icon: "bar-chart-2" },
-            { title: "NOIR COFFEE CO.", desc: "Branding and Webflow development for a boutique coffee roastery.", outcome: "Featured on 'Sites of the Day'.", icon: "coffee" },
-            { title: "FITNESS TRACKER", desc: "Custom mobile-first web app for tracking personalized workout plans.", outcome: "10,000+ active monthly users.", icon: "activity" },
-            { title: "CRYPTO EXPLORER", desc: "Real-time blockchain explorer with advanced transaction filtering.", outcome: "Highly secure and low latency architecture.", icon: "cpu" },
-            { title: "PORTFOLIO PLUS", desc: "A CMS template for creative artists to showcase their work.", outcome: "Used by over 500+ global artists.", icon: "image" },
-            { title: "AGENCY NEXUS", desc: "Internal workflow tool for managing agency-client relations.", outcome: "Improved team productivity by 25%.", icon: "briefcase" },
-            { title: "E-LEARN HUB", desc: "LMS platform for corporate training with interactive quizzes.", outcome: "Successfully trained 50,000+ employees.", icon: "book-open" },
-            { title: "TRAVEL LOG", desc: "Community-driven blog platform for digital nomads and explorers.", outcome: "Integrated custom travel map APIs.", icon: "map" },
-            { title: "AUTO REPAIR PRO", desc: "Booking system for local automotive repair shops.", outcome: "Increased appointments by 50% via online booking.", icon: "settings" },
-            { title: "LUXE INTERIORS", desc: "Minimalist landing page for a high-end interior design studio.", outcome: "Conversion rate improved by 15%.", icon: "layers" }
-        ];
-
-        let displayedCount = 0;
-        const projectsPerLoad = 4;
-        const projectGrid = document.getElementById('project-grid');
-        const viewMoreBtn = document.getElementById('view-more-btn');
-
-        function loadProjects() {
-            const nextBatch = projectsData.slice(displayedCount, displayedCount + projectsPerLoad);
-            
-            nextBatch.forEach((proj, index) => {
-                const card = document.createElement('div');
-                card.className = 'comic-panel project-card-animated';
-                // Add staggered delay for animation
-                card.style.animationDelay = `${index * 0.1}s`;
-                
-                card.innerHTML = `
-                    <div class="project-img">
-                        <div class="halftone"></div>
-                        <i data-lucide="${proj.icon}" style="width:50px; height:50px; opacity:0.1;"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="comic-font" style="font-size:2.5rem; margin-bottom:10px;">${proj.title}</h3>
-                        <p style="font-size:1.1rem; opacity:0.8; margin-bottom:20px;">${proj.desc}</p>
-                        <p style="font-weight:bold; border-top:2px solid black; padding-top:15px; font-style:italic;">OUTCOME: ${proj.outcome}</p>
-                    </div>
-                `;
-                projectGrid.appendChild(card);
-            });
-
-            displayedCount += nextBatch.length;
-            lucide.createIcons();
-
-            // Hide button if no more projects
-            if (displayedCount >= projectsData.length) {
-                viewMoreBtn.style.display = 'none';
-            }
-        }
-
-        // Initial Load
-        loadProjects();
-
-        // Event Listener
-        viewMoreBtn.addEventListener('click', loadProjects);
-
-        // UI Helpers
+        // Initialize Lucide Icons
         lucide.createIcons();
 
+        // Project Reveal Logic
+        const viewMoreBtn = document.getElementById('view-more-btn');
+        const projectsPerLoad = 4;
+
+        viewMoreBtn.addEventListener('click', () => {
+            const hiddenProjects = Array.from(document.querySelectorAll('.project-card:not(.visible)'));
+            const toReveal = hiddenProjects.slice(0, projectsPerLoad);
+
+            toReveal.forEach((proj, index) => {
+                // Staggered delay for pop animation
+                setTimeout(() => {
+                    proj.classList.add('visible');
+                }, index * 100);
+            });
+
+            // Check if there are any more left to hide the button
+            if (hiddenProjects.length <= projectsPerLoad) {
+                viewMoreBtn.style.display = 'none';
+            }
+        });
+
+        // Smooth Menu Toggle Logic
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             const burger = document.getElementById('burger-btn');
             const notch = document.getElementById('notch');
+            
             menu.classList.toggle('active');
             burger.classList.toggle('open');
+            
             if(menu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
-                notch.style.background = '#fff'; notch.style.color = '#000';
+                notch.style.background = '#fff';
+                notch.style.color = '#000';
                 document.querySelectorAll('.burger-line').forEach(l => l.style.background = '#000');
             } else {
                 document.body.style.overflow = 'auto';
-                notch.style.background = '#000'; notch.style.color = '#fff';
+                notch.style.background = '#000';
+                notch.style.color = '#fff';
                 document.querySelectorAll('.burger-line').forEach(l => l.style.background = '#fff');
             }
         }
 
+        // Optimized IST Live Clock
         function updateClock() {
             const clock = document.getElementById('live-clock');
             const now = new Date();
             const timeStr = now.toLocaleTimeString('en-US', { 
-                hour: 'numeric', minute: '2-digit', second: '2-digit', 
-                hour12: true, timeZone: 'Asia/Kolkata'
+                hour: 'numeric', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                hour12: true,
+                timeZone: 'Asia/Kolkata'
             });
             clock.textContent = `${timeStr} IST`;
         }
