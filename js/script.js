@@ -1,5 +1,22 @@
 
 /* ===============================
+   DOM READY
+================================ */
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Load components
+  loadComponent('/components/menu.html', 'mobile-menu');
+  loadComponent('/components/header.html', 'notch', initHeaderFeatures);
+  loadComponent('/components/footer.html', 'footer');
+
+  // Init projects
+  initProjects();
+
+  // Start clock
+  startClock();
+});
+
+/* ===============================
    COMPONENT LOADER
 ================================ */
 function loadComponent(path, targetId, callback) {
@@ -12,7 +29,7 @@ function loadComponent(path, targetId, callback) {
       const el = document.getElementById(targetId);
       if (el) el.innerHTML = html;
 
-      // Re-init Lucide icons after component load
+      // Re-init lucide icons after HTML injection
       if (window.lucide) lucide.createIcons();
 
       if (callback) callback();
@@ -21,24 +38,7 @@ function loadComponent(path, targetId, callback) {
 }
 
 /* ===============================
-   INIT AFTER DOM READY
-================================ */
-document.addEventListener('DOMContentLoaded', () => {
-
-  // Load Components
-  loadComponent('components/menu.html', 'mobile-menu');
-  loadComponent('components/header.html', 'notch', initHeaderFeatures);
-  loadComponent('components/footer.html', 'footer');
-
-  // View More Projects
-  initProjects();
-
-  // Live Clock
-  startClock();
-});
-
-/* ===============================
-   PROJECT REVEAL LOGIC
+   PROJECT VIEW MORE (FIXED)
 ================================ */
 function initProjects() {
   const viewMoreBtn = document.getElementById('view-more-btn');
@@ -47,6 +47,7 @@ function initProjects() {
   if (!viewMoreBtn) return;
 
   viewMoreBtn.addEventListener('click', () => {
+
     const hiddenProjects = Array.from(
       document.querySelectorAll('.project-card:not(.visible)')
     );
@@ -56,17 +57,28 @@ function initProjects() {
     toReveal.forEach((proj, index) => {
       setTimeout(() => {
         proj.classList.add('visible');
+
+        // After last reveal, check remaining cards
+        if (index === toReveal.length - 1) {
+          setTimeout(() => {
+            const remaining = document.querySelectorAll(
+              '.project-card:not(.visible)'
+            );
+
+            if (remaining.length === 0) {
+              viewMoreBtn.style.display = 'none';
+            }
+          }, 120); // animation buffer
+        }
+
       }, index * 100);
     });
 
-    if (hiddenProjects.length <= projectsPerLoad) {
-      viewMoreBtn.style.display = 'none';
-    }
   });
 }
 
 /* ===============================
-   MENU TOGGLE (GLOBAL)
+   MENU TOGGLE
 ================================ */
 function toggleMenu() {
   const menu = document.getElementById('mobile-menu');
@@ -96,15 +108,10 @@ function toggleMenu() {
 }
 
 /* ===============================
-   HEADER-SPECIFIC FEATURES
+   HEADER FEATURES
 ================================ */
 function initHeaderFeatures() {
-  // Run after header loads
-
-  // Clock init again (header contains clock)
   updateClock();
-
-  // Icons
   if (window.lucide) lucide.createIcons();
 }
 
@@ -131,27 +138,3 @@ function startClock() {
   updateClock();
   setInterval(updateClock, 1000);
 }
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  fetch('/components/menu.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('mobile-menu').innerHTML = data;
-    });
-
-  fetch('/components/header.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('notch').innerHTML = data;
-    });
-
-  fetch('/components/footer.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('footer').innerHTML = data;
-    });
-
-});
