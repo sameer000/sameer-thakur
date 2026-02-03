@@ -8,7 +8,7 @@ const supabaseUrl = 'https://wusuxccycluxrnudgwzh.supabase.co'
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1c3V4Y2N5Y2x1eHJudWRnd3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDgzNTksImV4cCI6MjA4NTQyNDM1OX0.Eao59gp6TXpNIHjipBF8yCbhzB-OPuWwvog0NBjrZ8M'
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-const projectsSection = document.getElementById('projects-section')
+const projectsSection = document.getElementById('project-grid')
 
 // Function to fetch projects
 async function fetchProjects() {
@@ -39,16 +39,26 @@ async function fetchProjects() {
 // Function to render projects in HTML
 function renderProjects(projects) {
   projectsSection.innerHTML = projects.map(project => `
-    <div class="project-card">
-      ${project.cover_image ? `<img src="${project.cover_image}" alt="${project.project}" class="project-cover">` : ''}
-      <h2 class="project-title">${project.project}</h2>
-      ${project.project_link ? `<a href="${project.project_link}" target="_blank" class="project-link">View Project</a>` : ''}
-    </div>
+   
+<div class="comic-panel project-card">
+                        <div class="project-img">
+                        <div class="halftone"></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="activity" aria-hidden="true" class="lucide lucide-activity"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">${project.project}</h3>
+                            <p class="project-desc">Custom mobile-first web app for tracking personalized workout plans.</p>
+                            <p class="project-outcome">OUTCOME: 10,000+ active monthly users.</p>
+                            ${project.project_link ? `<a href="${project.project_link}" target="_blank" class="project-link">View Project</a>` : ''}
+                        </div>
+                    </div>
+    
   `).join('')
 }
 
 // Call the function to fetch projects
 fetchProjects()
+
 
 
 
