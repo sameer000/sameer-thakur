@@ -1,4 +1,4 @@
-// Lucide Icons 
+// Lucide Icons
         lucide.createIcons();
 
         // Project Reveal Logic
