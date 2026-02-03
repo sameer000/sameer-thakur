@@ -54,3 +54,26 @@
         }
         setInterval(updateClock, 1000);
         updateClock();
+
+
+
+// Mobile Menu
+  fetch('components/menu.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('mobile-menu').innerHTML = data;
+    });
+
+  // Header / Notch
+  fetch('components/header.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('notch').innerHTML = data;
+    });
+
+  // Footer
+  fetch('components/footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer').innerHTML = data;
+    });
