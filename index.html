@@ -5,23 +5,245 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sameer Thakur | Expert Web Developer & UI/UX Designer Portfolio</title>
-<meta name="description" content="Official portfolio of Sameer Thakur, a professional Web Developer specializing in custom Frontend, WordPress, and Webflow solutions for global clients.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<!-- Lucide Icons Library -->
-<script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sameer Thakur | Expert Web Developer & UI/UX Designer Portfolio</title>
+    <meta name="description" content="Official portfolio of Sameer Thakur, a professional Web Developer specializing in custom Frontend, WordPress, and Webflow solutions for global clients.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons Library -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+  
 <body>
-<canvas id="fluid" class="fluid"></canvas>
+
 <header class="iphone-notch" id="notch"></header>
-  <nav id="mobile-menu"></nav>
+<nav id="mobile-menu"></nav>
+  
 <main>
 
+<!-- HERO SECTION -->
+        <section id="hero">
+            <div class="container">
+                <div class="grid grid-hero">
+                    <div class="hero-main comic-panel">
+                        <div class="halftone"></div>
+                        <p class="comic-font text-2xl hero-title-italic">READY... SET... CODE!</p>
+                        <h1 class="text-6xl">I AM <span class="action-text">SAMEER THAKUR</span></h1>
+                        <h2 class="text-2xl hero-subtitle">Professional Web Developer specializing in high-conversion digital experiences.</h2>
+                        <a href="#contact" class="btn-comic">HIRE THE HERO</a>
+                    </div>
+                    <div class="hero-side comic-panel">
+                        <div class="hero-side-box">
+                            <p class="comic-font hero-side-title">NOIR CODING</p>
+                            <p class="hero-side-subtext">"Every pixel has a purpose. Every line of code tells a story."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- ABOUT ME -->
+        <section id="about" class="mt-80">
+            <div class="container">
+                <div class="section-divider"></div>
+                <div class="grid grid-2 about-grid">
+                    <div class="order-mobile-second">
+                        <div class="speech-bubble">
+                            <p>"How did I become a Web Developer?"</p>
+                        </div>
+                        <h2 class="text-5xl">THE ORIGIN STORY</h2>
+                        <p class="about-text-content about-p-bottom">
+                            I am a dedicated developer focused on building clean, SEO-optimized, and highly responsive websites. My expertise lies in turning complex requirements into simple, user-friendly interfaces.
+                        </p>
+                        <p class="about-text-content">
+                            Whether it is custom <strong>React</strong> applications, scalable <strong>WordPress</strong> themes, or interactive <strong>Webflow</strong> designs, I ensure your project stands out in the crowded digital space.
+                        </p>
+                    </div>
+                    <div class="comic-panel about-portrait-panel order-mobile-first">
+                        <div class="text-center">
+                            <i data-lucide="user" class="about-portrait-icon"></i>
+                            <p class="comic-font text-2xl opacity-50">HERO PORTRAIT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="mt-80">
+            <div class="container">
+                <div class="section-divider"></div>
+                <h2 class="text-6xl text-center mt-80">CORE SUPERPOWERS</h2>
+                <div class="grid grid-3">
+                    <!-- Front End -->
+                    <div class="comic-panel skill-card">
+                        <div class="skill-header">
+                            <i data-lucide="code-2"></i>
+                            <h3 class="comic-font">FRONTEND ARSENAL</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li>- HTML5 / CSS3 / SCSS</li>
+                            <li>- Modern JavaScript (ES6+)</li>
+                            <li>- React & Tailwind CSS</li>
+                            <li>- Performance Optimization</li>
+                        </ul>
+                    </div>
+                    <!-- CMS -->
+                    <div class="comic-panel skill-card-dark">
+                        <div class="skill-header">
+                            <i data-lucide="layers"></i>
+                            <h3 class="comic-font">CMS & SOLUTIONS</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li>- WordPress Specialist</li>
+                            <li>- Webflow Visual Expert</li>
+                            <li>- Shopify Storefronts</li>
+                            <li>- Custom Plugin Logic</li>
+                        </ul>
+                    </div>
+                    <!-- Tools -->
+                    <div class="comic-panel skill-card">
+                        <div class="skill-header">
+                            <i data-lucide="wrench"></i>
+                            <h3 class="comic-font">UTILITY BELT</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li>- Figma to Live Site</li>
+                            <li>- SEO & Semantics</li>
+                            <li>- Git & Version Control</li>
+                            <li>- Web Accessibility</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS (STATIC REVEAL) -->
+        <section id="projects" class="mt-80">
+            <div class="container">
+                <div class="section-divider divider-angled"></div>
+                <h2 class="text-6xl text-right mt-80">MISSION LOGS</h2>
+                
+                <div class="grid grid-2 project-list-grid" id="project-grid">
+                    <!-- Batch 1 (Visible initially) -->
+                    <div class="comic-panel project-card visible">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="shopping-bag"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">SNEAKER VAULT</h3>
+                            <p class="project-desc">A high-conversion Shopify store built for a premium sneaker brand.</p>
+                            <p class="project-outcome">OUTCOME: 35% growth in online sales.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card visible">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="home"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">GLOBAL REALTY</h3>
+                            <p class="project-desc">Dynamic WordPress portal for real estate agencies with custom maps.</p>
+                            <p class="project-outcome">OUTCOME: Reduced page load time by 60%.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card visible">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="bar-chart-2"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">FINTECH DASHBOARD</h3>
+                            <p class="project-desc">A React-based financial analytics tool for enterprise clients.</p>
+                            <p class="project-outcome">OUTCOME: Real-time data processing under 100ms.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card visible">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="coffee"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">NOIR COFFEE CO.</h3>
+                            <p class="project-desc">Branding and Webflow development for a boutique coffee roastery.</p>
+                            <p class="project-outcome">OUTCOME: Featured on 'Sites of the Day'.</p>
+                        </div>
+                    </div>
+
+                    <!-- Batch 2 (Hidden) -->
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="activity"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">FITNESS TRACKER</h3>
+                            <p class="project-desc">Custom mobile-first web app for tracking personalized workout plans.</p>
+                            <p class="project-outcome">OUTCOME: 10,000+ active monthly users.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="cpu"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">CRYPTO EXPLORER</h3>
+                            <p class="project-desc">Real-time blockchain explorer with advanced transaction filtering.</p>
+                            <p class="project-outcome">OUTCOME: Highly secure architecture.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="image"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">PORTFOLIO PLUS</h3>
+                            <p class="project-desc">A CMS template for creative artists to showcase their work.</p>
+                            <p class="project-outcome">OUTCOME: Used by 500+ global artists.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="briefcase"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">AGENCY NEXUS</h3>
+                            <p class="project-desc">Internal workflow tool for managing agency-client relations.</p>
+                            <p class="project-outcome">OUTCOME: Improved productivity by 25%.</p>
+                        </div>
+                    </div>
+
+                    <!-- Batch 3 (Hidden) -->
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="book-open"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">E-LEARN HUB</h3>
+                            <p class="project-desc">LMS platform for corporate training with interactive quizzes.</p>
+                            <p class="project-outcome">OUTCOME: Trained 50,000+ employees.</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel project-card">
+                        <div class="project-img"><div class="halftone"></div><i data-lucide="map"></i></div>
+                        <div class="project-content">
+                            <h3 class="comic-font project-title">TRAVEL LOG</h3>
+                            <p class="project-desc">Community-driven blog platform for digital nomads.</p>
+                            <p class="project-outcome">OUTCOME: Integrated custom travel map APIs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-60">
+                    <button id="view-more-btn" class="btn-comic">VIEW MORE MISSIONS</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="mt-80 pb-50">
+            <div class="container">
+                <div class="section-divider"></div>
+                <div class="grid grid-2">
+                    <div class="contact-content">
+                        <h2 class="contact-title comic-font">SIGNAL RECEIVED?</h2>
+                        <p class="contact-desc">Let us collaborate to build a powerful digital identity. No project is too big for the code crusader.</p>
+                        <div class="bold text-2xl">
+                            <p class="contact-email">EMAIL: hello@sameerthakur.dev</p>
+                            <p class="contact-availability">AVAILABLE WORLDWIDE (REMOTE)</p>
+                        </div>
+                    </div>
+                    <div class="comic-panel contact-form-panel">
+                        <form onsubmit="event.preventDefault(); alert('Message Transmitted!');">
+                            <input type="text" required placeholder="YOUR IDENTITY (NAME)">
+                            <input type="email" required placeholder="SIGNAL CHANNEL (EMAIL)">
+                            <textarea rows="4" required placeholder="THE MISSION (MESSAGE)"></textarea>
+                            <button type="submit" class="btn-comic btn-full">TRANSMIT MISSION</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
   
@@ -53,15 +275,14 @@
 <button type="submit">Submit</button>
 </form>
 
-<h1>Projects</h1>
 <section id="projects-section" class="h-flex projects-section">
 <!-- Projects will be injected here -->
 </section>
-<main>
+</main>
+
 <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 <script src="/js/script.js"></script>
-<script src="/js/canvas.js"></script>
 <script type="module" src="/js/database.js"></script>
-<div id="footer"></div>
+<footer class="footer" id="footer"></footer>
 </body>
 </html>
