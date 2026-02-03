@@ -1,7 +1,7 @@
-// Lucide Icons
+// Lucide Icons 
         lucide.createIcons();
 
-        // Project Reveal Logic 
+        // Project Reveal Logic
         const viewMoreBtn = document.getElementById('view-more-btn');
         const projectsPerLoad = 4;
 
@@ -20,7 +20,7 @@
             }
         });
 
-        // Menu Toggle Logic 
+        // Menu Toggle Logic
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             const burger = document.getElementById('burger-btn');
@@ -42,7 +42,7 @@
             }
         }
 
-        // Live Clock 
+        // Live Clock logic
         function updateClock() {
             const clock = document.getElementById('live-clock');
             const now = new Date();
