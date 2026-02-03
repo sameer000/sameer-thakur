@@ -1,3 +1,4 @@
+/* Base Variables */
         :root {
             --black: #000000;
             --white: #ffffff;
@@ -11,7 +12,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
         }
 
         html {
@@ -24,11 +24,13 @@
             font-family: 'Space Mono', monospace;
             overflow-x: hidden;
             padding: 20px;
+            /* Light dot background configuration */
             background-image: radial-gradient(rgba(0,0,0,0.06) 1.5px, transparent 0);
             background-size: 40px 40px;
             background-attachment: fixed;
         }
 
+        /* Container logic: Section ke andar rehta hai */
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
@@ -54,22 +56,21 @@
         /* --- STABLE DYNAMIC ISLAND (NOTCH) --- */
         .iphone-notch {
             position: fixed;
-            top: 0;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--black);
             color: var(--white);
-            border-radius: 0 0 30px 30px;
-            padding: 8px 36px;
+            border-radius: 50px;
+            padding: 8px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: calc(100% - 40px);
-            max-width: 480px;
+            max-width: 550px;
             z-index: 3000;
-            box-shadow: 0 10px 30px rgb(255 255 255 / 30%);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-top-color: var(--black);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.15);
         }
 
         .notch-content {
@@ -154,6 +155,7 @@
             transition: transform 0.3s;
             cursor: pointer;
             margin: 10px 0;
+            display: block;
         }
 
         .menu-item:hover {
@@ -214,6 +216,10 @@
             transform: rotate(-0.5deg);
         }
 
+        .divider-angled {
+            transform: rotate(1deg);
+        }
+
         .speech-bubble {
             position: relative;
             background: var(--white);
@@ -221,6 +227,7 @@
             padding: 15px;
             border-radius: 20px;
             display: inline-block;
+            margin-bottom: 30px;
         }
 
         .speech-bubble::after {
@@ -237,7 +244,7 @@
 
         /* --- PROJECT ANIMATION & VISIBILITY --- */
         .project-card {
-            display: none; /* Initially hidden */
+            display: none; 
         }
 
         .project-card.visible {
@@ -276,10 +283,19 @@
         .grid-3 { grid-template-columns: 1fr; }
         @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
 
-        /* Typography */
+        /* Typography & Utilities */
         .text-6xl { font-size: clamp(3rem, 8vw, 6rem); line-height: 1; margin-bottom: 20px; }
         .text-5xl { font-size: 3rem; margin-bottom: 24px; }
         .text-2xl { font-size: 1.5rem; margin-bottom: 16px; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .italic { font-style: italic; }
+        .bold { font-weight: bold; }
+        .opacity-50 { opacity: 0.5; }
+        .opacity-80 { opacity: 0.8; }
+        
+        .mt-80 { margin-top: 80px; }
+        .pb-50 { padding-bottom: 50px; }
 
         @keyframes shake {
             0% { transform: translate(0, 0); }
@@ -340,4 +356,16 @@
             border-top: 8px solid var(--black);
             padding: 50px 0 100px;
             text-align: center;
+        }
+
+        /* Layout Helpers */
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .flex-col-center { display: flex; flex-direction: column; justify-content: center; }
+        .w-full { width: 100%; }
+        .order-1 { order: 1; }
+        .order-2 { order: 2; }
+
+        @media (max-width: 767px) {
+            .order-mobile-first { order: 1; }
+            .order-mobile-second { order: 2; }
         }
