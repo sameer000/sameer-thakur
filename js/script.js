@@ -43,17 +43,42 @@ function loadComponent(path, targetId, callback) {
 function initProjects() {
   const viewMoreBtn = document.getElementById('view-more-btn');
   const projectsPerLoad = 4;
-  const allProjects = Array.from(document.querySelectorAll('.project-card'));
 
   if (!viewMoreBtn) return;
 
-  // ✅ Show first 4 on page load
-  allProjects.slice(0, projectsPerLoad).forEach((proj) => {
-    proj.classList.add('visible');
+  function setupInitialCards() {
+    const allProjects = Array.from(document.querySelectorAll('.project-card'));
+
+    if (allProjects.length === 0) return;
+
+    // First 4 visible
+    allProjects.slice(0, projectsPerLoad).forEach((proj) => {
+      proj.classList.add('visible');
+    });
+
+    // Hide button if total <= 4
+    if (allProjects.length <= projectsPerLoad) {
+      viewMoreBtn.style.display = 'none';
+    }
+  }
+
+  // 👇 Observe DOM changes (Supabase load detect karega)
+  const observer = new MutationObserver(() => {
+    const projects = document.querySelectorAll('.project-card');
+
+    if (projects.length > 0) {
+      setupInitialCards();
+      observer.disconnect(); // once done, stop observing
+    }
   });
 
-  viewMoreBtn.addEventListener('click', () => {
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 
+  // View More click
+  viewMoreBtn.addEventListener('click', () => {
     const hiddenProjects = Array.from(
       document.querySelectorAll('.project-card:not(.visible)')
     );
@@ -78,7 +103,6 @@ function initProjects() {
 
       }, index * 100);
     });
-
   });
 }
 
