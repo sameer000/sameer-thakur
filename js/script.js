@@ -43,8 +43,14 @@ function loadComponent(path, targetId, callback) {
 function initProjects() {
   const viewMoreBtn = document.getElementById('view-more-btn');
   const projectsPerLoad = 4;
+  const allProjects = Array.from(document.querySelectorAll('.project-card'));
 
   if (!viewMoreBtn) return;
+
+  // ✅ Show first 4 on page load
+  allProjects.slice(0, projectsPerLoad).forEach((proj) => {
+    proj.classList.add('visible');
+  });
 
   viewMoreBtn.addEventListener('click', () => {
 
@@ -58,7 +64,6 @@ function initProjects() {
       setTimeout(() => {
         proj.classList.add('visible');
 
-        // After last reveal, check remaining cards
         if (index === toReveal.length - 1) {
           setTimeout(() => {
             const remaining = document.querySelectorAll(
@@ -68,7 +73,7 @@ function initProjects() {
             if (remaining.length === 0) {
               viewMoreBtn.style.display = 'none';
             }
-          }, 120); // animation buffer
+          }, 120);
         }
 
       }, index * 100);
@@ -76,6 +81,9 @@ function initProjects() {
 
   });
 }
+
+document.addEventListener("DOMContentLoaded", initProjects);
+
 
 /* ===============================
    MENU TOGGLE
