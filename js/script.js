@@ -185,37 +185,42 @@ function startClock() {
 ================================ */
 
  $(document).ready(function() {
-    var input = $("#phone");
+  var input = $("#phone");
 
-    input.intlTelInput({
-      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js"
-    });
-
-    // Function to update the value of id="cCode" based on the title attribute
-    function updateCCodeValue() {
-      var selectedFlagTitle = $('.selected-flag').attr('title');
-      $('#cCode').val(selectedFlagTitle);
-    }
-
-    // Trigger the update function initially
-    updateCCodeValue();
-
-    // Use MutationObserver to detect changes to the title attribute
-    var observer = new MutationObserver(function(mutationsList) {
-      for (var mutation of mutationsList) {
-        if (mutation.attributeName === 'title') {
-          // When the title attribute changes, update the value of id="cCode"
-          updateCCodeValue();
-        }
-      }
-    });
-
-    // Observe changes to attributes of the element with class="selected-flag"
-    observer.observe($('.selected-flag')[0], { attributes: true });
-
-    // Detect user's IP and set the country
-    $.get("https://ipinfo.io", function(response) {
-      var countryCode = response.country;
-      input.intlTelInput("setCountry", countryCode.toLowerCase());
-    }, "jsonp");
+  input.intlTelInput({
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/9.0.6/js/utils.js"
   });
+
+  function updateCCodeValue() {
+    var selectedFlagTitle = $('.selected-flag').attr('title');
+    $('#cCode').val(selectedFlagTitle);
+  }
+
+  updateCCodeValue();
+
+  var observer = new MutationObserver(function(mutationsList) {
+    for (var mutation of mutationsList) {
+      if (mutation.attributeName === 'title') {
+        updateCCodeValue();
+      }
+    }
+  });
+
+  if ($('.selected-flag').length) {
+    observer.observe($('.selected-flag')[0], { attributes: true });
+  }
+
+  var cachedCountry = localStorage.getItem('user_country_code');
+
+  if (cachedCountry) {
+    input.intlTelInput("setCountry", cachedCountry.toLowerCase());
+  } else {
+    $.get("https://ipapi.co/json/", function(response) {
+      if (response && response.country) {
+        var countryCode = response.country;
+        localStorage.setItem('user_country_code', countryCode);
+        input.intlTelInput("setCountry", countryCode.toLowerCase());
+      }
+    }, "json");
+  }
+});
