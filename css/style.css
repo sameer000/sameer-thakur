@@ -28,7 +28,9 @@
             background-size: 40px 40px;
             background-attachment: fixed;
         }
-
+img {
+    max-width: 100%;
+}
         /* Container logic: Section ke andar rehta hai */
         .container {
             max-width: var(--container-width);
