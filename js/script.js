@@ -37,6 +37,18 @@ function loadComponent(path, targetId, callback) {
     .catch(err => console.error(err));
 }
 
+// FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('active');
+                // Close others if needed
+                document.querySelectorAll('.faq-item').forEach(other => {
+                    if (other !== item) other.classList.remove('active');
+                });
+            });
+        });
+
 /* ===============================
    PROJECT VIEW MORE (FIXED)
 ================================ */
