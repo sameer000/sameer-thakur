@@ -335,9 +335,11 @@
                         <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                             <input type="hidden" name="form-name" value="contact" />
                             <p style="display: none;"> <label>Don't fill this out: <input name="bot-field" /></label> </p>
-                            <input type="text" id="name" name="name" required placeholder="YOUR IDENTITY (NAME)">
-                            <input type="email" id="email" name="email" required placeholder="SIGNAL CHANNEL (EMAIL)">
-                            <textarea rows="4" id="message" name="message" required placeholder="THE MISSION (MESSAGE)"></textarea>
+                            <input type="text" id="name" name="name" required placeholder="FULL NAME">
+                            <input type="email" id="email" name="email" required placeholder="EMAIL">
+                            <input type="tel" id="phone" name="phone" placeholder="PHONE">
+                             <input type="hidden" id="cCode" name="cCode" placeholder="cCode">
+                            <textarea rows="4" id="message" name="message" required placeholder="MESSAGE"></textarea>
                             <button type="submit" class="btn-comic btn-full">SEND MESSAGE</button>
                         </form>
                     </div>
