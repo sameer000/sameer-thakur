@@ -54,6 +54,7 @@ function loadComponent(path, targetId, callback) {
 ================================ */
 function initProjects() {
   const viewMoreBtn = document.getElementById('view-more-btn');
+  const initialShow = 6;
   const projectsPerLoad = 4;
 
   if (!viewMoreBtn) return;
@@ -63,24 +64,21 @@ function initProjects() {
 
     if (allProjects.length === 0) return;
 
-    // First 4 visible
-    allProjects.slice(0, projectsPerLoad).forEach((proj) => {
+    allProjects.slice(0, initialShow).forEach((proj) => {
       proj.classList.add('visible');
     });
 
-    // Hide button if total <= 4
-    if (allProjects.length <= projectsPerLoad) {
+    if (allProjects.length <= initialShow) {
       viewMoreBtn.style.display = 'none';
     }
   }
 
-  // 👇 Observe DOM changes (Supabase load detect karega)
   const observer = new MutationObserver(() => {
     const projects = document.querySelectorAll('.project-card');
 
     if (projects.length > 0) {
       setupInitialCards();
-      observer.disconnect(); // once done, stop observing
+      observer.disconnect();
     }
   });
 
@@ -89,7 +87,6 @@ function initProjects() {
     subtree: true
   });
 
-  // View More click
   viewMoreBtn.addEventListener('click', () => {
     const hiddenProjects = Array.from(
       document.querySelectorAll('.project-card:not(.visible)')
@@ -110,9 +107,8 @@ function initProjects() {
             if (remaining.length === 0) {
               viewMoreBtn.style.display = 'none';
             }
-          }, 120);
+          }, 150);
         }
-
       }, index * 100);
     });
   });
