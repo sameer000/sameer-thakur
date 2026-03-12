@@ -411,7 +411,10 @@ margin-bottom: 1rem;
 border-bottom: 3px solid currentColor;
 padding-bottom: 8px;
 }
-
+.skill-header svg {
+    width: 24px;
+    height: 24px;
+}
 .skill-header h3 {
 font-size: 2rem;
 }
