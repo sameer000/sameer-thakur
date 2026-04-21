@@ -573,6 +573,20 @@ animation: shake 0.4s infinite;
 .order-1 { order: 1; }
 .order-2 { order: 2; }
 
+
+/* --- EXPERT TOOLS SECTION --- */
+.tools-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+.tools-grid { grid-template-columns: 1fr; }
+}
+
+
 .tool-panel {
 padding: 30px;
 display: flex;
