@@ -280,7 +280,7 @@ animation: projectPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 /* Experience & Education */
 .origin-card { padding: 30px; margin-bottom: 30px; }
 .origin-year { font-size: 1.5rem; color: var(--black); background: var(--gray-light); display: inline-block; padding: 5px 15px; border: 2px solid var(--black); margin-bottom: 10px; }
-.origin-title { font-size: 2rem; margin-bottom: 5px; }
+.origin-title { font-size: 1.8rem; margin-bottom: 5px; }
 .origin-title .title-sub { display: block; font-size: 0.5em; opacity: 0.75; }
 .origin-org { font-size: 1rem; font-weight: bold; opacity: 0.6; margin-bottom: 15px; display: block; }
 .origin-desc { font-size: 1rem; line-height: 1.5; }
