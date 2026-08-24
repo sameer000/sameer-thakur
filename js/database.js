@@ -35,7 +35,7 @@ function renderProjects(projects) {
                         </div>
                         <div class="project-content">
                             <h3 class="comic-font project-title">${project.project}</h3>
-                            ${project.project_link ? `<a href="${project.project_link}" target="_blank" class="project-link">View Project</a>` : ''}
+                            ${project.project_link ? `<a href="${project.project_link}" target="_blank" rel="nofollow noopener noreferrer" class="project-link">View Project</a>` : ''}
                         </div>
                     </div>
 
