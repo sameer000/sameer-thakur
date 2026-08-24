@@ -14,14 +14,11 @@ const projects = [
   { project: 'Channel Play', sorting_number: 12, project_link: 'https://www.channelplay.in/' },
   { project: 'Hexxy', sorting_number: 13, project_link: 'https://hexxy.webflow.io/' },
   { project: 'Hues HQ', sorting_number: 14, project_link: 'https://hues-hq.webflow.io/' },
-  { project: 'Rampp AI', sorting_number: 15, project_link: 'https://rampp.webflow.io/' },
   { project: 'Imperial Construction Services', sorting_number: 16, project_link: 'https://ics-staging.webflow.io/' },
   { project: 'Primasoy', sorting_number: 17, project_link: 'https://primasoy-staging.webflow.io/' },
   { project: 'Sterling Interiors', sorting_number: 18, project_link: 'https://www.sterlinginteriors.co.uk/' },
-  { project: 'Holograph Pressworks', sorting_number: 19, project_link: 'https://holograph-press-works.webflow.io/' },
   { project: 'Hugin', sorting_number: 20, project_link: 'https://hugin.webflow.io/' },
   { project: 'Eazy Build', sorting_number: 21, project_link: 'https://eazybuild.webflow.io/' },
-  { project: 'Get Vidya', sorting_number: 22, project_link: 'https://get-vidya.webflow.io/' },
   { project: 'Costroom', sorting_number: 23, project_link: 'https://costroom.webflow.io/' }
 ]
 

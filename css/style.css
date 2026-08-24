@@ -440,7 +440,7 @@ gap: 40px;
 }
 
 .project-img {
-height: 250px;
+height: 184px;
 background: var(--gray-light);
 border-bottom: 4px solid var(--black);
 display: flex;
@@ -458,8 +458,8 @@ opacity: 0.1;
 
 .project-thumb {
 width: 100%;
-height: 100%;
-object-fit: cover;
+height: auto;
+/* object-fit: cover; */
 object-position: top;
 position: relative;
 z-index: 1;
