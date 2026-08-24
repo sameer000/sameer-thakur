@@ -1,45 +1,36 @@
-// Import Supabase client
-// https://wusuxccycluxrnudgwzh.supabase.co
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1c3V4Y2N5Y2x1eHJudWRnd3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDgzNTksImV4cCI6MjA4NTQyNDM1OX0.Eao59gp6TXpNIHjipBF8yCbhzB-OPuWwvog0NBjrZ8M
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
-
-// Supabase credentials
-const supabaseUrl = 'https://wusuxccycluxrnudgwzh.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1c3V4Y2N5Y2x1eHJudWRnd3poIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDgzNTksImV4cCI6MjA4NTQyNDM1OX0.Eao59gp6TXpNIHjipBF8yCbhzB-OPuWwvog0NBjrZ8M'
-const supabase = createClient(supabaseUrl, supabaseKey)
+// Static project data (from Supabase backup, 11 August 2026)
+const projects = [
+  { project: 'Holograph Technologies', sorting_number: 1, project_link: 'https://www.holographtechnologies.com/' },
+  { project: 'Sparkr', sorting_number: 2, project_link: 'https://sparkr-staging.webflow.io/' },
+  { project: 'Genius BSI', sorting_number: 3, project_link: 'https://www.geniusbsi.com/' },
+  { project: 'Pintarro', sorting_number: 4, project_link: 'https://www.pintarro.com/' },
+  { project: 'IND Robo Tech', sorting_number: 5, project_link: 'https://www.indrobotech.com/' },
+  { project: 'Desire Migration', sorting_number: 6, project_link: 'https://www.desiremigration.com.au/' },
+  { project: 'Fair Chance Foundation', sorting_number: 7, project_link: 'https://fairfoundation.webflow.io/' },
+  { project: 'Join Brightlife', sorting_number: 8, project_link: 'https://www.joinbrightlife.com/' },
+  { project: 'The Full Circle', sorting_number: 9, project_link: 'https://www.thefullcircle.in/' },
+  { project: '1Channel', sorting_number: 10, project_link: 'https://www.1channel.co/' },
+  { project: 'Maisum', sorting_number: 11, project_link: 'https://maisum.webflow.io/' },
+  { project: 'Channel Play', sorting_number: 12, project_link: 'https://www.channelplay.in/' },
+  { project: 'Hexxy', sorting_number: 13, project_link: 'https://hexxy.webflow.io/' },
+  { project: 'Hues HQ', sorting_number: 14, project_link: 'https://hues-hq.webflow.io/' },
+  { project: 'Rampp AI', sorting_number: 15, project_link: 'https://rampp.webflow.io/' },
+  { project: 'Imperial Construction Services', sorting_number: 16, project_link: 'https://ics-staging.webflow.io/' },
+  { project: 'Primasoy', sorting_number: 17, project_link: 'https://primasoy-staging.webflow.io/' },
+  { project: 'Sterling Interiors', sorting_number: 18, project_link: 'https://www.sterlinginteriors.co.uk/' },
+  { project: 'Holograph Pressworks', sorting_number: 19, project_link: 'https://holograph-press-works.webflow.io/' },
+  { project: 'Hugin', sorting_number: 20, project_link: 'https://hugin.webflow.io/' },
+  { project: 'Eazy Build', sorting_number: 21, project_link: 'https://eazybuild.webflow.io/' },
+  { project: 'Get Vidya', sorting_number: 22, project_link: 'https://get-vidya.webflow.io/' },
+  { project: 'Costroom', sorting_number: 23, project_link: 'https://costroom.webflow.io/' }
+]
 
 const projectsSection = document.getElementById('project-grid')
-
-// Function to fetch projects
-async function fetchProjects() {
-  try {
-    const { data, error } = await supabase
-      .from('sameer-projects') // table name exactly as in Supabase
-      .select('*')
-      .order('sorting_number', { ascending: true }) // optional sorting
-
-    if (error) {
-      console.error('Error fetching projects:', error)
-      projectsSection.innerHTML = '<p>Failed to load projects.</p>'
-      return
-    }
-
-    if (!data || data.length === 0) {
-      projectsSection.innerHTML = '<p>No projects found.</p>'
-      return
-    }
-
-    renderProjects(data)
-  } catch (err) {
-    console.error('Unexpected error:', err)
-    projectsSection.innerHTML = '<p>Something went wrong.</p>'
-  }
-}
 
 // Function to render projects in HTML
 function renderProjects(projects) {
   projectsSection.innerHTML = projects.map(project => `
-   
+
 <div class="comic-panel project-card">
                         <div class="project-img">
                         <div class="halftone"></div>
@@ -47,20 +38,11 @@ function renderProjects(projects) {
                         </div>
                         <div class="project-content">
                             <h3 class="comic-font project-title">${project.project}</h3>
-                            <p class="project-desc">Custom mobile-first web app for tracking personalized workout plans.</p>
-                            <p class="project-outcome">OUTCOME: 10,000+ active monthly users.</p>
                             ${project.project_link ? `<a href="${project.project_link}" target="_blank" class="project-link">View Project</a>` : ''}
                         </div>
                     </div>
-    
+
   `).join('')
 }
 
-// Call the function to fetch projects
-fetchProjects()
-
-
-
-
-
-
+renderProjects([...projects].sort((a, b) => a.sorting_number - b.sorting_number))
